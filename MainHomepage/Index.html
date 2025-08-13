@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PINTEXIM - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kapakana:wght@300..400&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        /* General Body and Typography */
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+        p {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .text-uppercase {
+            letter-spacing: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: url('imges/herosectionbg.png');
+            /* Path to your image */
+            background-size: cover;
+            /* Make image cover entire section */
+            background-position: center;
+            /* Center the image */
+            background-repeat: no-repeat;
+            /* Avoid repeating */
+            height: 100vh;
+            /* Full screen height */
+            color: #EAC769;
+            /* Text color */
+            display: flex;
+            /* Center content */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: "Bebas Neue", sans-serif;
+        }
+
+        .p {
+            font-family: "Kapakana", cursive;
+            font-size: 2.25rem;
+            color: white;
+        }
+
+        .hh1 {
+            font-family: "Bebas Neue", sans-serif;
+            font-size: 7rem;
+        }
+
+        .btn-warning {
+            background-color: transparent;
+            border-color: #f0ede4;
+            color: #fff;
+            font-weight: lighter;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .btn-outline-warning {
+            color: #ffc107;
+            border-color: #ffc107;
+        }
+
+        .btn-outline-warning:hover {
+            background-color: #ffc107;
+            color: #fff;
+        }
+
+        .navbar-brand {
+            margin-right: 30%;
+        }
+
+        /* Features Section */
+        .features-section {
+            background-image: url('imges/ff2.png') !important;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .features-section-img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .features-section-text {
+            width: 90%;
+        }
+
+        /* Our Products Section */
+        .products-section {
+            background-color: #F8F4EE;
+        }
+
+        .products-section h2,
+        .products-section p {
+            color: #D35400;
+        }
+
+        .product-category {
+            background-color: #E6E6FA;
+            transition: transform 0.3s ease;
+        }
+
+        .product-category:hover {
+            transform: scale(1.05);
+        }
+
+        .product-category img {
+            height: 150px;
+            object-fit: contain;
+        }
+
+        .h2 {
+            font-family: "Kapakana", cursive;
+            font-size: 2.25rem;
+        }
+
+        /* Behind The Bites Section */
+        .behind-the-bites {
+            background-color: #F8F4EE;
+        }
+
+        .behind-the-bites h2 {
+            color: #D35400;
+        }
+
+        .behind-the-bites .carousel-item .col-md-3 {
+            padding: 0 5px;
+        }
+
+        .behind-the-bites .image-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .behind-the-bites .image-card img {
+            transition: transform 0.3s ease;
+        }
+
+        .behind-the-bites .image-card:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 1rem 5%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+
+        .nav-left {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .nav-center {
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-right {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: #ff8c00;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .search-icon,
+        .heart-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: inline-block;
+        }
+
+        .search-icon {
+            background-image: url('./icon-lens.svg');
+        }
+
+        .heart-icon {
+            background-image: url('./icon-heart.svg');
+        }
+
+        .search-icon:hover,
+        .heart-icon:hover {
+            opacity: 0.7;
+        }
+
+        .contact-btn {
+            background: transparent;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #fff;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #ff8c00;
+            border-color: #ff8c00;
+            color: #fff;
+        }
+
+        .behind-the-bites .overlay-icon {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+        .behind-the-bites .carousel-control-prev,
+        .behind-the-bites .carousel-control-next {
+            width: 5%;
+            color: #D35400;
+            background-color: rgba(211, 84, 0, 0.1);
+            border-radius: 50%;
+            margin: auto 0;
+            opacity: 1;
+        }
+
+        .behind-the-bites .carousel-control-prev-icon,
+        .behind-the-bites .carousel-control-next-icon {
+            background-image: none;
+            font-size: 2rem;
+            color: #D35400;
+        }
+
+        .behind-the-bites .carousel-control-prev-icon::before {
+            content: "\f053";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+        }
+
+        .behind-the-bites .carousel-control-next-icon::before {
+            content: "\f054";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+        }
+
+        /* Most Loved Products Section */
+        .most-loved-section {
+            background-color: #F8F4EE;
+        }
+
+        .most-loved-section h2 {
+            color: #D35400;
+        }
+
+        .product-card {
+            background-color: #E6E6FA;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-card .heart-icon {
+            color: #ccc;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .product-card .heart-icon:hover {
+            color: #D35400;
+        }
+
+        .star-rating .fa-star {
+            font-size: 1.2rem;
+        }
+
+        /* Fresh Products Section */
+        .fresh-products-section {
+            background-image: url('imges/ho1.png') !important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 2%;
+        }
+
+        .fresh-products-section1 {
+            background-image: url('imges/ho2.png') !important;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 2%;
+        }
+
+        .fresh-products-section-img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fresh-products-section-text {
+            width: 70%;
+            padding: 15%;
+        }
+
+        .fresh-products-section .overlay-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .fresh-products-section .overlay-text h2 {
+            font-family: "Inter", sans-serif;
+            font-style: italic;
+            color: #EAC769;
+            font-size: 4rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* Tablet View */
+        @media (max-width: 992px) {
+            .fresh-products-section {
+                height: 50vh;
+            }
+
+            .fresh-products-section .overlay-text h2 {
+                font-size: 3rem;
+            }
+        }
+
+        /* Mobile View */
+        @media (max-width: 576px) {
+            .fresh-products-section {
+                height: 40vh;
+            }
+
+            .fresh-products-section .overlay-text h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background-color: #fff;
+            position: relative;
+            padding-bottom: 80px;
+        }
+
+        .testimonials-section h2 {
+            color: #D35400;
+        }
+
+        .testimonial-card {
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .quote-icon {
+            transform: rotate(180deg);
+        }
+
+        .carousel-indicators-custom {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            margin: 0;
+        }
+
+        .carousel-indicators-custom button {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ccc;
+            border: none;
+            opacity: 0.5;
+            margin: 0 5px;
+        }
+
+        .carousel-indicators-custom button.active {
+            background-color: #D35400;
+            opacity: 1;
+        }
+         /* Footer */
+        .footer-spacer {
+            height: 60px;
+            background: #fff;
+        }
+
+        .footer {
+            background: #46355b; /* Main footer background color */
+            color: #fff;
+            padding: 60px  5px;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background: radial-gradient(circle at 15px 15px, #46355b 15px, transparent 15px);
+            background-size: 30px 30px;
+            background-repeat: repeat-x;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 300px 1fr 1fr 350px;
+            gap: 4rem;
+            max-width: 1800px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .footer-logo img {
+            width: 239px;
+            height: 239px;
+            margin-bottom: 1rem;
+            object-fit: contain;
+        }
+
+        .footer-section h3 {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #E5E7EB;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-section ul li a::before {
+            content: "›";
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+
+        .footer-section ul li a:hover {
+            color: #fff;
+        }
+
+        .contact-info p {
+            color: #E5E7EB;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-info p a {
+            color: #E5E7EB;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info p a:hover {
+            color: #fff;
+        }
+
+        .contact-info p::before {
+            margin-right: 0.75rem;
+            margin-top: 0.1rem;
+            flex-shrink: 0;
+        }
+
+        .contact-info .address::before {
+            content: "";
+            background-image: url('./icon-map-pin.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+        }
+
+        .contact-info .phone::before {
+            content: "";
+            background-image: url('./icon-phone.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+        }
+
+        .contact-info .email::before {
+            content: "";
+            background-image: url('./icon-email.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+        }
+
+        .contact-info .hours::before {
+            content: "";
+            background-image: url('./icon-clock.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+        }
+
+        .newsletter {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .newsletter h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .newsletter .subtitle {
+            color: #E5E7EB;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .newsletter p {
+            color: #E5E7EB;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 0.9rem;
+        }
+
+        .newsletter-form button {
+            background: #FF8C00;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .newsletter-form button:hover {
+            background: #E67E00;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons img {
+            height: 36px;
+            transition: transform 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.1);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: #E5E7EB;
+            font-size: 0.9rem;
+        }
+
+        /* Specific style for the 'Explore' footer section to make its background transparent */
+        .footer-explore-section {
+            background-color: transparent;
+        }
+
+        /* Default Footer Section background (for Contact and Subscribe) */
+        /* .footer-section {
+            background-color: #3B3356;
+        } */
+
+        .footer-section .list-unstyled li {
+            margin-bottom: 0.3rem;
+        }
+
+        .footer-section .list-unstyled li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section .list-unstyled li a:hover {
+            color: #ffc107;
+        }
+
+        .social-icons a {
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #ffc107;
+        }
+
+        .copyright-section {
+            background-color: #3B3356;
+            border-top: 1px solid #555;
+            color: #fff;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <ul class="nav-menu">
+                    <li><a href="../MainHomepage/Index.html">Home</a></li>
+                    <li><a href="../about-us/about-us.html">About Us</a></li>
+                    <li><a href="../products/products.html">Products</a></li>
+                    <li><a href="../blog/blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="nav-center">
+                <div class="logo">
+                    <img src="./logo.png" alt="Pintexim Logo">
+                </div>
+            </div>
+            <div class="nav-right">
+                <div class="nav-actions">
+                    <span class="search-icon"></span>
+                    <span class="heart-icon"></span>
+                    <a href="../contact-us/contact-us.html">
+                        <button class="contact-btn">Contact Us</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1 class="hh1">Natural Delight</h1>
+        <p class="p">Naturally tasty, delightfully pure.</p>
+        <button class="btn btn-warning mt-3 px-4 py-2">View Products</button>
+    </section>
+
+    <section class="features-section">
+        <div class="features-section-img">
+            <img src="imges/ff1.png" class="features-section-text"></img>
+        </div>
+    </section>
+
+    <section class="products-section py-5 bg-light text-center">
+        <div class="container">
+            <h2 class="display-4 fw-bold text-uppercase">Our Products</h2>
+            <p class="mb-5">View Products</p>
+            <div class="row justify-content-center g-4">
+                <div class="col-12 col-md-4">
+                    <div class="product-category card p-4 border-0 rounded-4 shadow-sm">
+                        <img src="imges/our product1.png" class="card-img-top mx-auto d-block" alt="Cookies">
+                        <div class="card-body">
+                            <h5 class="card-title mt-3">Cookies</h5>
+                            <p class="card-text text-muted">8 products</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="product-category card p-4 border-0 rounded-4 shadow-sm">
+                        <img src="imges/our product2.png" class="card-img-top mx-auto d-block" alt="Honey">
+                        <div class="card-body">
+                            <h5 class="card-title mt-3">Honey</h5>
+                            <p class="card-text text-muted">5 products</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="product-category card p-4 border-0 rounded-4 shadow-sm">
+                        <img src="imges/our product3.png" class="card-img-top mx-auto d-block" alt="Ghee">
+                        <div class="card-body">
+                            <h5 class="card-title mt-3">Ghee</h5>
+                            <p class="card-text text-muted">1 product</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="fresh-products-section">
+        <div class="fresh-products-section-img">
+            <img src="imges/f1.png" class="fresh-products-section-text"></img>
+        </div>
+    </section>
+
+    <section class="most-loved-section py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center display-4 fw-bold text-uppercase">Most Loved</h2>
+            <p class="text-center mb-5">View Products</p>
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="product-card card h-100 border-0 rounded-4 shadow-sm">
+                        <span class="badge bg-warning text-dark position-absolute top-0 start-0 m-2">Best Sellers</span>
+                        <a href="#" class="heart-icon position-absolute top-0 end-0 m-2"><i
+                                class="fas fa-heart text-white"></i></a>
+                        <img src="imges/mvp.png" class="card-img-top p-4" alt="Jaggery Coconut Cookies">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Jaggery Coconut Cookies</h5>
+                            <p class="card-text fw-bold">$200</p>
+                            <div class="star-rating d-flex justify-content-center mb-3">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="far fa-star text-warning"></i>
+                            </div>
+                            <a href="#" class="btn btn-warning px-4 py-2">VIEW</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="product-card card h-100 border-0 rounded-4 shadow-sm">
+                        <span class="badge bg-warning text-dark position-absolute top-0 start-0 m-2">Best Sellers</span>
+                        <a href="#" class="heart-icon position-absolute top-0 end-0 m-2"><i
+                                class="fas fa-heart text-white"></i></a>
+                        <img src="imges/mvp.png" class="card-img-top p-4" alt="Jaggery Coconut Cookies">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Jaggery Coconut Cookies</h5>
+                            <p class="card-text fw-bold">$200</p>
+                            <div class="star-rating d-flex justify-content-center mb-3">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="far fa-star text-warning"></i>
+                            </div>
+                            <a href="#" class="btn btn-warning px-4 py-2">VIEW</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="product-card card h-100 border-0 rounded-4 shadow-sm">
+                        <span class="badge bg-warning text-dark position-absolute top-0 start-0 m-2">Best Sellers</span>
+                        <a href="#" class="heart-icon position-absolute top-0 end-0 m-2"><i
+                                class="fas fa-heart text-white"></i></a>
+                        <img src="imges/mvp.png" class="card-img-top p-4" alt="Jaggery Coconut Cookies">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Jaggery Coconut Cookies</h5>
+                            <p class="card-text fw-bold">$200</p>
+                            <div class="star-rating d-flex justify-content-center mb-3">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="far fa-star text-warning"></i>
+                            </div>
+                            <a href="#" class="btn btn-warning px-4 py-2">VIEW</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="product-card card h-100 border-0 rounded-4 shadow-sm">
+                        <span class="badge bg-warning text-dark position-absolute top-0 start-0 m-2">Best Sellers</span>
+                        <a href="#" class="heart-icon position-absolute top-0 end-0 m-2"><i
+                                class="fas fa-heart text-white"></i></a>
+                        <img src="imges/mvp.png" class="card-img-top p-4" alt="Jaggery Coconut Cookies">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Jaggery Coconut Cookies</h5>
+                            <p class="card-text fw-bold">$200</p>
+                            <div class="star-rating d-flex justify-content-center mb-3">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="far fa-star text-warning"></i>
+                            </div>
+                            <a href="#" class="btn btn-warning px-4 py-2">VIEW</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="product-card card h-100 border-0 rounded-4 shadow-sm">
+                        <span class="badge bg-warning text-dark position-absolute top-0 start-0 m-2">Best Sellers</span>
+                        <a href="#" class="heart-icon position-absolute top-0 end-0 m-2"><i
+                                class="fas fa-heart text-white"></i></a>
+                        <img src="imges/mvp.png" class="card-img-top p-4" alt="Jaggery Coconut Cookies">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Jaggery Coconut Cookies</h5>
+                            <p class="card-text fw-bold">$200</p>
+                            <div class="star-rating d-flex justify-content-center mb-3">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="far fa-star text-warning"></i>
+                            </div>
+                            <a href="#" class="btn btn-warning px-4 py-2">VIEW</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="product-card card h-100 border-0 rounded-4 shadow-sm">
+                        <span class="badge bg-warning text-dark position-absolute top-0 start-0 m-2">Best Sellers</span>
+                        <a href="#" class="heart-icon position-absolute top-0 end-0 m-2"><i
+                                class="fas fa-heart text-white"></i></a>
+                        <img src="imges/mvp.png" class="card-img-top p-4" alt="Jaggery Coconut Cookies">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Jaggery Coconut Cookies</h5>
+                            <p class="card-text fw-bold">$200</p>
+                            <div class="star-rating d-flex justify-content-center mb-3">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="far fa-star text-warning"></i>
+                            </div>
+                            <a href="#" class="btn btn-warning px-4 py-2">VIEW</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="behind-the-bites py-5">
+        <div class="container">
+            <h2 class="text-center display-4 fw-bold text-uppercase">Behind The Bites</h2>
+            <p class="text-center mb-5">View Products</p>
+            <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row justify-content-center g-4">
+                            <div class="col-12 col-md-3">
+                                <div class="image-card">
+                                    <img src="imges/btb1.png" class="d-block w-100 rounded-3" alt="Cookies">
+                                    <i class="fas fa-camera overlay-icon"></i>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <div class="image-card">
+                                    <img src="imges/btb2.png" class="d-block w-100 rounded-3" alt="Honey and Butter">
+                                    <i class="fas fa-camera overlay-icon"></i>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <div class="image-card">
+                                    <img src="imges/btb3.png" class="d-block w-100 rounded-3" alt="Beehive">
+                                    <i class="fas fa-camera overlay-icon"></i>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <div class="image-card">
+                                    <img src="imges/btb4.png" class="d-block w-100 rounded-3" alt="Almonds and Cheese">
+                                    <i class="fas fa-camera overlay-icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="fresh-products-section1">
+        <div>
+            <p class="fresh-products-section-text"></p>
+        </div>
+    </section>
+
+    <section class="testimonials-section py-5 bg-white">
+        <div class="container">
+            <h2 class="text-center display-4 fw-bold text-uppercase">Testimonials from Partners</h2>
+            <p class="text-center mb-5">REVIEW</p>
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row justify-content-center g-4">
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="testimonial-card card p-4 h-100 border-0 shadow-sm rounded-4">
+                                    <div class="card-body">
+                                        <div class="quote-icon text-warning mb-3"><i class="fas fa-quote-left fs-3"></i>
+                                        </div>
+                                        <h5 class="card-title fw-bold">ANJALI MEHRA</h5>
+                                        <p class="card-text">I've been using Parmeshwari products for a few months now,
+                                            and I really love them. The ghee smells and tastes just like homemade, and
+                                            the quality is always good. You can tell it's made with care.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="testimonial-card card p-4 h-100 border-0 shadow-sm rounded-4">
+                                    <div class="card-body">
+                                        <div class="quote-icon text-primary mb-3"><i class="fas fa-quote-left fs-3"></i>
+                                        </div>
+                                        <h5 class="card-title fw-bold">RAHUL DESHPANDE</h5>
+                                        <p class="card-text">The honey-dipped dry fruits are my favorite! They're fresh,
+                                            tasty, and make for a great snack or gift. I've ordered multiple times and
+                                            they never disappoint.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4 d-none d-lg-block">
+                                <div class="testimonial-card card p-4 h-100 border-0 shadow-sm rounded-4">
+                                    <div class="card-body">
+                                        <div class="quote-icon text-secondary mb-3"><i
+                                                class="fas fa-quote-left fs-3"></i></div>
+                                        <h5 class="card-title fw-bold">NEERAJ TIWARI</h5>
+                                        <p class="card-text">I trust Parmeshwari because their products are clean and
+                                            natural. No chemicals or artificial stuff. Just pure, good food. I recommend
+                                            it to my family and friends too.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row justify-content-center g-4">
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="testimonial-card card p-4 h-100 border-0 shadow-sm rounded-4">
+                                    <div class="card-body">
+                                        <div class="quote-icon text-info mb-3"><i class="fas fa-quote-left fs-3"></i>
+                                        </div>
+                                        <h5 class="card-title fw-bold">PRIYA SHARMA</h5>
+                                        <p class="card-text">Parmeshwari's cookies are a big hit at my home. My kids
+                                            enjoy them and I feel happy knowing they're made with natural ingredients.
+                                            Tasty and healthy!</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="testimonial-card card p-4 h-100 border-0 shadow-sm rounded-4">
+                                    <div class="card-body">
+                                        <div class="quote-icon text-danger mb-3"><i class="fas fa-quote-left fs-3"></i>
+                                        </div>
+                                        <h5 class="card-title fw-bold">MEENA PATEL</h5>
+                                        <p class="card-text">I tried Parmeshwari after a friend suggested it, and now I
+                                            regularly order ghee and dry fruits from them. Everything is fresh and
+                                            packed really well. It feels like homemade.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-4 d-none d-lg-block">
+                                <div class="testimonial-card card p-4 h-100 border-0 shadow-sm rounded-4">
+                                    <div class="card-body">
+                                        <div class="quote-icon text-warning mb-3"><i class="fas fa-quote-left fs-3"></i>
+                                        </div>
+                                        <h5 class="card-title fw-bold">ANJALI MEHRA</h5>
+                                        <p class="card-text">I've been using Parmeshwari products for a few months now,
+                                            and I really love them. The ghee smells and tastes just like homemade, and
+                                            the quality is always good. You can tell it's made with care.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-indicators-custom d-flex justify-content-center mt-4">
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Spacer -->
+    <div class="footer-spacer"></div>
+
+    <!-- Footer -->
+    <footer class="footer" style="width: 100%;">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="./footer-logo.png" alt="Pintexim Footer Logo">
+            </div>
+
+            <!-- 'Explore' section with transparent background -->
+            <div class="footer-section footer-explore-section">
+                <h3>Explore</h3>
+                <ul>
+                    <li><a href="../MainHomepage/Index.html">Home</a></li>
+                    <li><a href="../about-us/about-us.html">About us</a></li>
+                    <li><a href="../contact-us/contact-us.html">Contact us</a></li>
+                    <li><a href="../blog/blog.html">Blog</a></li>
+                    <li><a href="#">Team</a></li>
+                    <li><a href="../products/products.html">Our Menu</a></li>
+                </ul>
+            </div>
+
+            <!-- 'Contact us' section (retains default .footer-section background) -->
+            <div class="footer-section" style="padding-right: 10%;">
+                <h3>Contact us</h3>
+                <div class="contact-info">
+                    <p class="address"><a href="https://maps.google.com/?q=Andheri+East+Mumbai+-400069"
+                            target="_blank">Andheri East Mumbai -400069</a></p>
+                    <p class="phone"><a href="tel:+918682908682">+91 8682908682</a></p>
+                    <p class="email"><a
+                            href="mailto:parmeshwariinternationalexim@gmail.com">parmeshwariinternationalexim@gmail.com</a>
+                    </p>
+                    <p class="hours">Mon - Sat - 09:00 AM to 05:00 PM</p>
+                </div>
+            </div>
+
+            <!-- 'Subscribe' section (retains default .footer-section background) -->
+            <div class="footer-section newsletter" >
+                <h3>Subscribe</h3>
+                <div class="subtitle">To Our Newsletter</div>
+                <p>Subscribe our newsletter and get discount 25%off</p>
+                <div class="newsletter-form" >
+                    <input type="email" placeholder="Enter Your Email">
+                    <button type="submit">Subscribe</button>
+                </div>
+                <div class="social-icons">
+                    <img src="./social-facebook.png" alt="Facebook">
+                    <img src="./social-twitter.png" alt="Twitter">
+                    <img src="./social-instagram.png" alt="Instagram">
+                    <img src="./social-youtube.png" alt="YouTube">
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2025 by PINTEXIM. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Pintexim</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@300;400;500;600&family=Bebas+Neue:wght@400&family=Kapakana:wght@400&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 1rem 5%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+
+        .nav-left {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .nav-center {
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-right {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: #ff8c00;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .search-icon,
+        .heart-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: inline-block;
+        }
+
+        .search-icon {
+            background-image: url('./icon-lens.svg');
+        }
+
+        .heart-icon {
+            background-image: url('./icon-heart.svg');
+        }
+
+        .search-icon:hover,
+        .heart-icon:hover {
+            opacity: 0.7;
+        }
+
+        .contact-btn {
+            background: transparent;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #fff;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #ff8c00;
+            border-color: #ff8c00;
+            color: #fff;
+        }
+
+        /* Products Header */
+        .products-header {
+            background: #f8f8f8;
+            padding: 120px 5% 30px;
+            text-align: center;
+        }
+
+        .products-header h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 72px;
+            line-height: 86px;
+            color: #DA7527;
+            margin-bottom: 2rem;
+        }
+
+        /* Products Grid */
+        .products-section {
+            padding: 40px 5% 60px;
+            background: #f8f9fa;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: #ffffff;
+            border-radius: 25px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 220px;
+            background: #f8f9fa;
+            border-radius: 20px;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .product-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+        }
+
+        .product-details {
+            flex: 1;
+        }
+
+        .product-info h3 {
+            font-family: 'Poppins', sans-serif;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            color: #121212;
+            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .product-price {
+            font-family: 'Poppins', sans-serif;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 1.1rem;
+            line-height: 1.4;
+            color: #DA7527;
+            margin-bottom: 0.25rem;
+        }
+
+        .product-rating {
+            display: flex;
+            justify-content: flex-start;
+            gap: 0.2rem;
+            margin-bottom: 0;
+        }
+
+        .star {
+            color: #FFD700;
+            font-size: 1.43rem;
+        }
+
+        .star.empty {
+            color: #e0e0e0;
+        }
+
+        .product-actions {
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .view-btn {
+            background: #DA7527;
+            color: white;
+            border: none;
+            padding: 0.85rem 2.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(218, 117, 39, 0.3);
+        }
+
+        .view-btn:hover {
+            background: #B85E1F;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(218, 117, 39, 0.4);
+        }
+
+        .wishlist-icon {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+
+        .wishlist-icon:hover {
+            background: #DA7527;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .wishlist-icon::before {
+            content: "♡";
+            font-size: 1.4rem;
+            color: #666;
+        }
+
+        .wishlist-icon:hover::before {
+            content: "♥";
+            color: white;
+        }
+
+        /* Cares For You Section */
+        .cares-section {
+            padding: 100px 5%;
+            background: #f7e6d2;
+            text-align: center;
+        }
+
+        .cares-header {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 72px;
+            line-height: 86px;
+            color: #DA7527;
+            margin-bottom: 3.5rem;
+            text-align: center;
+        }
+
+        .cares-container {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 1rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            justify-items: center;
+        }
+
+        .cares-cookies-list {
+            text-align: left;
+            justify-self: end;
+        }
+
+        .cookies-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cookies-list li {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 22px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            vertical-align: middle;
+            color: #333;
+            margin-bottom: 0.7rem;
+            white-space: nowrap;
+        }
+
+        .cookies-list li.highlighted {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            vertical-align: middle;
+            color: #8B4513;
+            position: relative;
+            margin-bottom: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .cookies-list li.highlighted::after {
+            content: "";
+            position: absolute;
+            right: -0.5rem;
+            top: 50%;
+            width: 1.75rem;
+            height: 2px;
+            background-color: #8B4513;
+            transform: translateY(-50%);
+        }
+
+        .cookies-list li.highlighted::before {
+            content: "";
+            position: absolute;
+            right: -0.8rem;
+            top: 50%;
+            width: 6px;
+            height: 6px;
+            background-color: #8B4513;
+            border-radius: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .cares-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            justify-self: center;
+        }
+
+        .cares-image img {
+            width: 440px;
+            height: 440px;
+            object-fit: contain;
+        }
+
+        .cares-ingredients {
+            text-align: left;
+            justify-self: start;
+        }
+
+        .cares-ingredients h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            text-underline-offset: 0.5rem;
+        }
+
+        .cares-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .cares-list li {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin-bottom: 0.8rem;
+            padding-left: 1.6rem;
+            position: relative;
+        }
+
+        .cares-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .order-btn {
+            background: #DA7527;
+            color: white;
+            border: none;
+            padding: 0.9rem 2.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background 0.3s ease;
+            text-transform: uppercase;
+            margin-top: 1.8rem;
+        }
+
+        .order-btn:hover {
+            background: #B85E1F;
+        }
+
+        /* Advantages Section */
+        .advantages-section {
+            padding: 100px 5%;
+            background: #fff;
+            text-align: center;
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(4, max-content);
+            gap: 2.4rem;
+            width: fit-content;
+            max-width: 100%;
+            margin: 0 auto;
+            justify-content: center;
+        }
+
+        .advantage-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            text-align: left;
+            padding: 0.75rem 0.5rem;
+        }
+
+        .advantage-icon {
+            width: 78px;
+            height: 78px;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border-radius: 0;
+        }
+
+        .advantage-icon img {
+            width: 78px;
+            height: 78px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .advantage-item h3 {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 18px;
+            line-height: 26px;
+            font-weight: 600;
+            color: #333;
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        .advantage-item p {
+            display: none;
+        }
+
+        /* Footer */
+        .footer-spacer {
+            height: 60px;
+            background: #fff;
+        }
+
+        .footer {
+            background: #46355b;
+            color: #fff;
+            /* padding: 60px 5% 30px; */
+                 padding: 60px  5px;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background: radial-gradient(circle at 15px 15px, #46355b 15px, transparent 15px);
+            background-size: 30px 30px;
+            background-repeat: repeat-x;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 300px 1fr 1fr 350px;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .footer-logo img {
+            width: 239px;
+            height: 239px;
+            margin-bottom: 1rem;
+            object-fit: contain;
+        }
+
+        .footer-section h3 {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #E5E7EB;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-section ul li a::before {
+            content: "›";
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+
+        .footer-section ul li a:hover {
+            color: #fff;
+        }
+
+        .contact-info p {
+            color: #E5E7EB;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-info p a {
+            color: #E5E7EB;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info p a:hover {
+            color: #fff;
+        }
+
+        .contact-info p::before {
+            margin-right: 0.75rem;
+            margin-top: 0.1rem;
+            flex-shrink: 0;
+        }
+
+        .contact-info .address::before {
+            content: "";
+            background-image: url('./icon-map-pin.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+        }
+
+        .contact-info .phone::before {
+            content: "";
+            background-image: url('./icon-phone.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+        }
+
+        .contact-info .email::before {
+            content: "";
+            background-image: url('./icon-email.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+        }
+
+        .contact-info .hours::before {
+            content: "";
+            background-image: url('./icon-clock.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+        }
+
+        .newsletter {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .newsletter h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .newsletter .subtitle {
+            color: #E5E7EB;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .newsletter p {
+            color: #E5E7EB;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 0.9rem;
+        }
+
+        .newsletter-form button {
+            background: #FF8C00;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .newsletter-form button:hover {
+            background: #E67E00;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons img {
+            height: 36px;
+            transition: transform 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.1);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: #E5E7EB;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) and (min-width: 1025px) {
+            .footer-content {
+                grid-template-columns: 250px 1fr 1fr 300px;
+                gap: 3rem;
+            }
+
+            .footer-logo img {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .advantages-grid {
+                grid-template-columns: repeat(2, max-content);
+                gap: 2rem;
+                width: fit-content;
+                margin: 0 auto;
+            }
+
+            .advantage-item {
+                gap: 12px;
+            }
+
+            .advantage-icon,
+            .advantage-icon img {
+                width: 70px;
+                height: 70px;
+            }
+
+            .advantage-item h3 {
+                font-size: 17px;
+                line-height: 24px;
+            }
+
+            .cares-header {
+                font-size: 60px;
+                line-height: 72px;
+                margin-bottom: 3rem;
+            }
+
+            .cares-container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                text-align: center;
+            }
+
+            .cares-image img {
+                width: 320px;
+                height: 320px;
+            }
+
+            .cares-cookies-list {
+                text-align: center;
+            }
+
+            .cookies-list li {
+                font-size: 18px;
+                line-height: 100%;
+            }
+
+            .cookies-list li.highlighted {
+                font-size: 26px;
+                line-height: 100%;
+            }
+
+            .cookies-list li.highlighted::after,
+            .cookies-list li.highlighted::before {
+                display: none;
+            }
+
+            .cares-ingredients {
+                text-align: center;
+            }
+
+            .cares-ingredients h3 {
+                font-size: 1.8rem;
+            }
+
+            .cares-list li {
+                font-size: 1rem;
+                padding-left: 1.5rem;
+            }
+
+            .order-btn {
+                font-size: 0.9rem;
+                padding: 0.9rem 2.2rem;
+            }
+
+            .products-header h1 {
+                font-size: 60px;
+                line-height: 72px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+
+            .footer-logo {
+                grid-column: 1 / -1;
+                align-items: center;
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+
+            .footer-logo img {
+                width: 180px;
+                height: 180px;
+            }
+
+            .newsletter {
+                grid-column: 1 / -1;
+                text-align: center;
+                margin-top: 1rem;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+
+            .newsletter-form {
+                max-width: 400px;
+                margin: 0 auto 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .nav-left {
+                justify-content: center;
+                order: 2;
+            }
+
+            .nav-center {
+                order: 1;
+            }
+
+            .nav-right {
+                justify-content: center;
+                order: 3;
+            }
+
+            .nav-menu {
+                gap: 1.5rem;
+            }
+
+            .nav-menu a {
+                font-size: 0.9rem;
+            }
+
+            .logo img {
+                height: 45px;
+            }
+
+            .contact-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .search-icon,
+            .heart-icon {
+                width: 22px;
+                height: 22px;
+            }
+
+            .products-header {
+                padding: 100px 5% 20px;
+            }
+
+            .products-header h1 {
+                font-size: 42px;
+                line-height: 50px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .product-card {
+                border-radius: 20px;
+                padding: 1.25rem;
+            }
+
+            .product-image {
+                height: 200px;
+                border-radius: 15px;
+            }
+
+            .product-image img {
+                border-radius: 15px;
+            }
+
+            .wishlist-icon {
+                width: 35px;
+                height: 35px;
+                top: 1rem;
+                right: 1rem;
+            }
+
+            .wishlist-icon::before {
+                font-size: 1.2rem;
+            }
+
+            .product-info {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: left;
+            }
+
+            .product-actions {
+                margin-left: 0;
+                margin-top: 1rem;
+                text-align: center;
+            }
+
+            .cares-header {
+                font-size: 48px;
+                line-height: 58px;
+                margin-bottom: 2rem;
+            }
+
+            .cares-container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                text-align: center;
+            }
+
+            .cares-image img {
+                width: 260px;
+                height: 260px;
+            }
+
+            .cares-cookies-list {
+                text-align: center;
+            }
+
+            .cookies-list li {
+                font-size: 16px;
+                line-height: 100%;
+            }
+
+            .cookies-list li.highlighted {
+                font-size: 22px;
+                line-height: 100%;
+            }
+
+            .cookies-list li.highlighted::after,
+            .cookies-list li.highlighted::before {
+                display: none;
+            }
+
+            .cares-ingredients {
+                text-align: center;
+            }
+
+            .cares-ingredients h3 {
+                font-size: 1.5rem;
+            }
+
+            .cares-list li {
+                font-size: 1rem;
+                padding-left: 1.5rem;
+            }
+
+            .order-btn {
+                font-size: 0.9rem;
+                padding: 0.8rem 2rem;
+            }
+
+            .advantages-grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+                width: fit-content;
+                margin: 0 auto;
+            }
+
+            .advantage-item {
+                gap: 12px;
+            }
+
+            .advantage-icon,
+            .advantage-icon img {
+                width: 64px;
+                height: 64px;
+            }
+
+            .advantage-item h3 {
+                font-size: 16px;
+                line-height: 24px;
+            }
+
+            .footer-spacer {
+                height: 40px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .footer-logo {
+                align-items: center;
+            }
+
+            .footer-logo img {
+                width: 135px;
+                height: 135px;
+            }
+
+            .footer-section ul li a::before {
+                display: none;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input {
+                border-radius: 5px;
+                margin-bottom: 1rem;
+            }
+
+            .newsletter-form button {
+                border-radius: 5px;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+
+            .products-section {
+                padding: 24px 5% 40px;
+            }
+
+            .cares-section {
+                padding: 40px 5%;
+            }
+
+            .advantages-section {
+                padding: 40px 5%;
+            }
+
+            h2 {
+                font-size: 48px !important;
+                line-height: 58px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .products-header {
+                padding: 210px 5% 16px;
+            }
+
+            .products-header h1 {
+                font-size: 36px;
+                line-height: 44px;
+            }
+
+            .products-section {
+                padding: 20px 5% 32px;
+            }
+
+            .nav-menu {
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .nav-menu a {
+                font-size: 0.8rem;
+            }
+
+            .nav-actions {
+                gap: 1rem;
+            }
+
+            .advantages-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-info {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: left;
+            }
+
+            .product-actions {
+                margin-left: 0;
+                margin-top: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <ul class="nav-menu">
+                    <li><a href="../MainHomepage/Index.html">Home</a></li>
+                    <li><a href="../about-us/about-us.html">About Us</a></li>
+                    <li><a href="../products/products.html">Products</a></li>
+                    <li><a href="../blog/blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="nav-center">
+                <div class="logo">
+                    <img src="./logo.png" alt="Pintexim Logo">
+                </div>
+            </div>
+            <div class="nav-right">
+                <div class="nav-actions">
+                    <span class="search-icon"></span>
+                    <span class="heart-icon"></span>
+                    <a href="../contact-us/contact-us.html">
+                        <button class="contact-btn">Contact Us</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Products Header -->
+    <section class="products-header">
+        <h1>COOKIES</h1>
+    </section>
+
+    <!-- Products Grid Section -->
+    <section class="products-section">
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="wishlist-icon"></div>
+                <div class="product-image">
+                    <img src="./img-product-default.png" alt="Jaggery Coconut Cookies">
+                </div>
+                <div class="product-info">
+                    <div class="product-details">
+                        <h3>Jaggery Coconut Cookies</h3>
+                        <div class="product-price">$200</div>
+                        <div class="product-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star empty">★</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="view-btn">VIEW</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="wishlist-icon"></div>
+                <div class="product-image">
+                    <img src="./img-product-default.png" alt="Jaggery Mix Fruits Cookies">
+                </div>
+                <div class="product-info">
+                    <div class="product-details">
+                        <h3>Jaggery Mix Fruits Cookies</h3>
+                        <div class="product-price">$200</div>
+                        <div class="product-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star empty">★</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="view-btn">VIEW</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="wishlist-icon"></div>
+                <div class="product-image">
+                    <img src="./img-product-default.png" alt="Jaggery Oats Cookies">
+                </div>
+                <div class="product-info">
+                    <div class="product-details">
+                        <h3>Jaggery Oats Cookies</h3>
+                        <div class="product-price">$200</div>
+                        <div class="product-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star empty">★</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="view-btn">VIEW</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="wishlist-icon"></div>
+                <div class="product-image">
+                    <img src="./img-product-default.png" alt="Jaggery Bajra Cookies">
+                </div>
+                <div class="product-info">
+                    <div class="product-details">
+                        <h3>Jaggery Bajra Cookies</h3>
+                        <div class="product-price">$200</div>
+                        <div class="product-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star empty">★</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="view-btn">VIEW</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="wishlist-icon"></div>
+                <div class="product-image">
+                    <img src="./img-product-default.png" alt="Jaggery Jowar Cookies">
+                </div>
+                <div class="product-info">
+                    <div class="product-details">
+                        <h3>Jaggery Jowar Cookies</h3>
+                        <div class="product-price">$200</div>
+                        <div class="product-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star empty">★</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="view-btn">VIEW</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="wishlist-icon"></div>
+                <div class="product-image">
+                    <img src="./img-product-default.png" alt="Jaggery Chocolate Cookies">
+                </div>
+                <div class="product-info">
+                    <div class="product-details">
+                        <h3>Jaggery Chocolate Cookies</h3>
+                        <div class="product-price">$200</div>
+                        <div class="product-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star empty">★</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="view-btn">VIEW</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="wishlist-icon"></div>
+                <div class="product-image">
+                    <img src="./img-product-default.png" alt="Jaggery Ragi Cookies">
+                </div>
+                <div class="product-info">
+                    <div class="product-details">
+                        <h3>Jaggery Ragi Cookies</h3>
+                        <div class="product-price">$200</div>
+                        <div class="product-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star empty">★</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="view-btn">VIEW</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="wishlist-icon"></div>
+                <div class="product-image">
+                    <img src="./img-product-default.png" alt="Jaggery Rajgira Cookies">
+                </div>
+                <div class="product-info">
+                    <div class="product-details">
+                        <h3>Jaggery Rajgira Cookies</h3>
+                        <div class="product-price">$200</div>
+                        <div class="product-rating">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star empty">★</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="view-btn">VIEW</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cares For You Section -->
+    <section class="cares-section">
+        <h2 class="cares-header">CARES FOR YOU</h2>
+        <div class="cares-container">
+            <div class="cares-cookies-list">
+                <ul class="cookies-list">
+                    <li>Jowar Cookies</li>
+                    <li>Bajra cookies</li>
+                    <li>Oats Cookies</li>
+                    <li class="highlighted">Choco Cookies</li>
+                    <li>Mix Dry Fruits Cookies</li>
+                    <li>Rajgira Cookies</li>
+                    <li>Coconut Cookies</li>
+                    <li>Ragi Cookies</li>
+                    <li>Dry Fruit Jaggery Cookies</li>
+                </ul>
+            </div>
+            <div class="cares-image">
+                <img src="./img-cookie.png" alt="Cookie Image">
+            </div>
+            <div class="cares-ingredients">
+                <h3>INGREDIENTS</h3>
+                <ul class="cares-list">
+                    <li>Chocolate Chips</li>
+                    <li>Coco Powder</li>
+                    <li>Wheat Flour</li>
+                    <li>Ragi Flour</li>
+                    <li>Black Jaggery</li>
+                    <li>Ghee</li>
+                </ul>
+                <button class="order-btn">ORDER HERE</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section class="advantages-section">
+        <div class="advantages-grid">
+            <div class="advantage-item">
+                <div class="advantage-icon">
+                    <img src="./icon-shipping.svg" alt="Free Shipping">
+                </div>
+                <h3>Free Shipping PAN India</h3>
+                <p>Enjoy free shipping across India on all orders</p>
+            </div>
+            <div class="advantage-item">
+                <div class="advantage-icon">
+                    <img src="./icon-badge.svg" alt="Hand Picked">
+                </div>
+                <h3>Hand Picked Ingredients</h3>
+                <p>Carefully selected premium quality ingredients</p>
+            </div>
+            <div class="advantage-item">
+                <div class="advantage-icon">
+                    <img src="./icon-agent.svg" alt="24/7 Support">
+                </div>
+                <h3>24 hours a day, 7 days a week</h3>
+                <p>Round the clock customer support</p>
+            </div>
+            <div class="advantage-item">
+                <div class="advantage-icon">
+                    <img src="./icon-payment.svg" alt="Multiple Cards">
+                </div>
+                <h3>Pay with multiple Cards</h3>
+                <p>Accept all major credit and debit cards</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Spacer -->
+    <div class="footer-spacer"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="./footer-logo.png" alt="Pintexim Footer Logo">
+            </div>
+
+            <div class="footer-section">
+                <h3>Explore</h3>
+                <ul>
+                    <li><a href="../MainHomepage/Index.html">Home</a></li>
+                    <li><a href="../about-us/about-us.html">About us</a></li>
+                    <li><a href="../contact-us/contact-us.html">Contact us</a></li>
+                    <li><a href="../blog/blog.html">Blog</a></li>
+                    <li><a href="#">Team</a></li>
+                    <li><a href="../products/products.html">Our Menu</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact us</h3>
+                <div class="contact-info">
+                    <p class="address"><a href="https://maps.google.com/?q=Andheri+East+Mumbai+-400069"
+                            target="_blank">Andheri East Mumbai -400069</a></p>
+                    <p class="phone"><a href="tel:+918682908682">+91 8682908682</a></p>
+                    <p class="email"><a
+                            href="mailto:parmeshwariinternationalexim@gmail.com">parmeshwariinternationalexim@gmail.com</a>
+                    </p>
+                    <p class="hours">Mon - Sat - 09:00 AM to 05:00 PM</p>
+                </div>
+            </div>
+
+            <div class="footer-section newsletter">
+                <h3>Subscribe</h3>
+                <div class="subtitle">To Our Newsletter</div>
+                <p>Subscribe our newsletter and get discount 25%off</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Enter Your Email">
+                    <button type="submit">Subscribe</button>
+                </div>
+                <div class="social-icons">
+                    <img src="./social-facebook.png" alt="Facebook">
+                    <img src="./social-twitter.png" alt="Twitter">
+                    <img src="./social-instagram.png" alt="Instagram">
+                    <img src="./social-youtube.png" alt="YouTube">
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2025 by PINTEXIM. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

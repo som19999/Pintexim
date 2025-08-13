@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Pintexim</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@300;400;500;600&family=Bebas+Neue:wght@400&family=Kapakana:wght@400&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 1rem 5%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+
+        .nav-left {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .nav-center {
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-right {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: #ff8c00;
+        }
+
+
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .search-icon,
+        .heart-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: inline-block;
+        }
+
+        .search-icon {
+            background-image: url('./icon-lens.svg');
+        }
+
+        .heart-icon {
+            background-image: url('./icon-heart.svg');
+        }
+
+        .search-icon:hover,
+        .heart-icon:hover {
+            opacity: 0.7;
+        }
+
+        .contact-btn {
+            background: transparent;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #fff;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: #ff8c00;
+            border-color: #ff8c00;
+            color: #fff;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./hero.png');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero-content h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 182px;
+            line-height: 218px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(344.02deg, #D49D26 50.71%, #FAF38B 67.1%, #F2CF7E 83.48%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-family: 'Kapakana';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 62px;
+            line-height: 62px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            text-align: center;
+            color: #FFFFFF;
+            width: 739px;
+            height: 62px;
+            margin: 0 auto;
+        }
+
+        /* Brand Introduction */
+        .brand-intro {
+            padding: 100px 5%;
+            background: #fff;
+            text-align: center;
+        }
+
+        .brand-intro h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 72px;
+            line-height: 86px;
+            text-align: center;
+            color: #DA7527;
+            margin-bottom: 2rem;
+        }
+
+        .brand-intro p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Image Sections */
+        .image-section {
+            width: 100%;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .carousel1 {
+            background-image: url('./carousel1.png');
+        }
+
+        .carousel2 {
+            background-image: url('./carousel2.png');
+        }
+
+        /* Mission Vision Values */
+        .mission-section {
+            padding: 100px 5%;
+            background: #f8f8f8;
+            text-align: center;
+        }
+
+        .mission-section h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 72px;
+            line-height: 86px;
+            text-align: center;
+            color: #DA7527;
+            margin-bottom: 4rem;
+        }
+
+        .mission-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .mission-card {
+            background: transparent;
+            padding: 0;
+            text-align: center;
+        }
+
+        .mission-icon {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mission-icon img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .mission-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .mission-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 1rem;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        /* Why Choose Us */
+        .why-choose {
+            padding: 100px 5%;
+            background: url('./why-choose-us-bg.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .why-choose-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-choose-content h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 72px;
+            line-height: 86px;
+            text-align: left;
+            color: #DA7527;
+            margin-bottom: 2rem;
+        }
+
+        .why-choose-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .why-choose-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Certifications */
+        .certifications {
+            padding: 100px 5%;
+            background: #f8f8f8;
+            text-align: center;
+        }
+
+        .certifications h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 72px;
+            line-height: 86px;
+            text-align: center;
+            color: #DA7527;
+            margin-bottom: 4rem;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+        }
+
+        .cert-grid-bottom {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cert-item {
+            background: transparent;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .cert-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .cert-icon {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cert-icon img {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+        }
+
+        .cert-label {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #333;
+            margin-top: 0.5rem;
+        }
+
+        /* Our Team */
+        .our-team {
+            padding: 100px 5%;
+            background: #fff;
+            text-align: center;
+        }
+
+        .our-team h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 72px;
+            line-height: 86px;
+            text-align: center;
+            color: #DA7527;
+            margin-bottom: 4rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-member {
+            background: transparent;
+            padding: 0;
+            transition: transform 0.3s ease;
+            text-align: center;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-member img {
+            width: 100%;
+            height: 382px;
+            border-radius: 10px;
+            margin: 0 0 1rem 0;
+            object-fit: cover;
+            display: block;
+        }
+
+        .team-member-content {
+            padding: 0 0.5rem;
+        }
+
+        .team-member h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+            color: #DA7527;
+            text-transform: uppercase;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .team-member .position {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.75rem;
+        }
+
+        .team-member .description {
+            color: #333;
+            font-size: 0.875rem;
+            line-height: 1.4;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        /* Culture Section */
+        .culture {
+            padding: 100px 5%;
+            background: #f7e6d2;
+            text-align: center;
+        }
+
+        .culture h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 72px;
+            line-height: 86px;
+            text-align: center;
+            color: #DA7527;
+            margin-bottom: 4rem;
+        }
+
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .culture-item {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer */
+        .footer-spacer {
+            height: 60px;
+            background: #fff;
+        }
+
+        .footer {
+            background: #46355b;
+            color: #fff; 
+                 padding: 60px  5px;
+            /* padding: 60px 5% 30px; */
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background: radial-gradient(circle at 15px 15px, #46355b 15px, transparent 15px);
+            background-size: 30px 30px;
+            background-repeat: repeat-x;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 300px 1fr 1fr 350px;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .footer-logo img {
+            width: 239px;
+            height: 239px;
+            margin-bottom: 1rem;
+            object-fit: contain;
+        }
+
+        .footer-section h3 {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #E5E7EB;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-section ul li a::before {
+            content: "›";
+            margin-right: 0.5rem;
+            font-weight: bold;
+        }
+
+        .footer-section ul li a:hover {
+            color: #fff;
+        }
+
+        .contact-info p {
+            color: #E5E7EB;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-info p a {
+            color: #E5E7EB;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info p a:hover {
+            color: #fff;
+        }
+
+        .contact-info p::before {
+            margin-right: 0.75rem;
+            margin-top: 0.1rem;
+            flex-shrink: 0;
+        }
+
+        .contact-info .address::before {
+            content: "";
+            background-image: url('./icon-map-pin.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+        }
+
+        .contact-info .phone::before {
+            content: "";
+            background-image: url('./icon-phone.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+        }
+
+        .contact-info .email::before {
+            content: "";
+            background-image: url('./icon-email.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+        }
+
+        .contact-info .hours::before {
+            content: "";
+            background-image: url('./icon-clock.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+        }
+
+        .newsletter {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .newsletter h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .newsletter .subtitle {
+            color: #E5E7EB;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .newsletter p {
+            color: #E5E7EB;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 0.9rem;
+        }
+
+        .newsletter-form button {
+            background: #FF8C00;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .newsletter-form button:hover {
+            background: #E67E00;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons img {
+            height: 36px;
+            transition: transform 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.1);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: #E5E7EB;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) and (min-width: 1025px) {
+            .footer-content {
+                grid-template-columns: 250px 1fr 1fr 300px;
+                gap: 3rem;
+            }
+
+            .footer-logo img {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .why-choose-container {
+                gap: 2.5rem;
+            }
+
+            .mission-cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 3rem;
+            }
+
+            .cert-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+                max-width: 800px;
+            }
+
+            .cert-grid-bottom {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+                max-width: 500px;
+            }
+
+            .cert-icon {
+                width: 140px;
+                height: 140px;
+            }
+
+            .cert-icon img {
+                width: 140px;
+                height: 140px;
+            }
+
+            .certifications {
+                padding: 80px 5%;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .culture-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+
+            .footer-logo {
+                grid-column: 1 / -1;
+                align-items: center;
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+
+            .footer-logo img {
+                width: 180px;
+                height: 180px;
+            }
+
+            .newsletter {
+                grid-column: 1 / -1;
+                text-align: center;
+                margin-top: 1rem;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+
+            .newsletter-form {
+                max-width: 400px;
+                margin: 0 auto 1.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 140px;
+                line-height: 168px;
+            }
+
+            .hero-content p {
+                font-size: 48px;
+                line-height: 48px;
+            }
+
+            .brand-intro h2,
+            .mission-section h2,
+            .certifications h2,
+            .our-team h2,
+            .culture h2,
+            .why-choose-content h2 {
+                font-size: 60px;
+                line-height: 72px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .nav-left {
+                justify-content: center;
+                order: 2;
+            }
+
+            .nav-center {
+                order: 1;
+            }
+
+            .nav-right {
+                justify-content: center;
+                order: 3;
+            }
+
+            .nav-menu {
+                gap: 1.5rem;
+            }
+
+            .nav-menu a {
+                font-size: 0.9rem;
+            }
+
+            .logo img {
+                height: 45px;
+            }
+
+            .contact-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .search-icon,
+            .heart-icon {
+                width: 22px;
+                height: 22px;
+            }
+
+            .hero-content h1 {
+                font-size: 120px;
+                line-height: 140px;
+            }
+
+            .hero-content p {
+                font-family: 'Kapakana';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 32px;
+                line-height: 32px;
+                width: auto;
+                height: auto;
+                color: #FFFFFF;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .why-choose-container {
+                grid-template-columns: 1fr;
+                text-align: left;
+            }
+
+            .why-choose-content h2 {
+                text-align: center;
+            }
+
+            .mission-cards {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .mission-icon {
+                width: 120px;
+                height: 120px;
+            }
+
+            .mission-icon img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .cert-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .cert-grid-bottom {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .cert-icon {
+                width: 140px;
+                height: 140px;
+            }
+
+            .cert-icon img {
+                width: 140px;
+                height: 140px;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .team-member {
+                padding: 0;
+                max-width: 100%;
+            }
+
+            .team-member img {
+                width: 100%;
+                height: 250px;
+            }
+
+            .team-member h4 {
+                font-size: 1.125rem;
+            }
+
+            .team-member .position {
+                font-size: 0.875rem;
+            }
+
+            .team-member .description {
+                font-size: 0.75rem;
+            }
+
+            .footer-spacer {
+                height: 40px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .footer-logo {
+                align-items: center;
+            }
+
+            .footer-logo img {
+                width: 135px;
+                height: 135px;
+            }
+
+            .footer-section ul li a::before {
+                display: none;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input {
+                border-radius: 5px;
+                margin-bottom: 1rem;
+            }
+
+            .newsletter-form button {
+                border-radius: 5px;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+
+            .brand-intro,
+            .mission-section,
+            .certifications,
+            .our-team,
+            .culture {
+                padding: 60px 5%;
+            }
+
+            h2 {
+                font-size: 48px !important;
+                line-height: 58px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-menu {
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .nav-menu a {
+                font-size: 0.8rem;
+            }
+
+            .nav-actions {
+                gap: 1rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <ul class="nav-menu">
+                    <li><a href="../MainHomepage/Index.html">Home</a></li>
+                    <li><a href="../about-us/about-us.html">About Us</a></li>
+                    <li><a href="../products/products.html">Products</a></li>
+                    <li><a href="../blog/blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="nav-center">
+                <div class="logo">
+                    <img src="./logo.png" alt="Pintexim Logo">
+                </div>
+            </div>
+            <div class="nav-right">
+                <div class="nav-actions">
+                    <span class="search-icon"></span>
+                    <span class="heart-icon"></span>
+                    <a href="../contact-us/contact-us.html">
+                        <button class="contact-btn">Contact Us</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>ABOUT US</h1>
+            <p>Tradition That Speaks Through Taste</p>
+        </div>
+    </section>
+
+    <!-- Brand Introduction -->
+    <section class="brand-intro">
+        <h2>Brand Introduction</h2>
+        <p>At Pintexim, we believe that taste is more than just flavor — it's a connection to our roots, our values, and
+            our culture.</p>
+        <p>Rooted in rich cultural heritage and guided by a deep commitment to purity, Pintexim brings you products that
+            are not just flavorful—but meaningful. Every ingredient is carefully selected, every process is thoughtfully
+            crafted, and every product is a reflection of our values. From our hands to your home, we deliver authentic
+            quality that stands the test of time. With a passion for preserving age-old recipes and a promise of
+            uncompromised standards.</p>
+        <p>More than just a product, each offering from Pintexim is a journey — one that takes you back to the
+            comforting kitchens of your childhood, the flavors of family gatherings, and the warmth of homemade
+            goodness. In a world that’s constantly changing, Pintexim stands as a symbol of consistency, quality, and
+            heartfelt tradition. With every bite, sip, or sprinkle, we promise you a taste that isn’t just delicious —
+            but meaningful.</p>
+    </section>
+
+    <!-- Carousel 1 Image -->
+    <div class="image-section carousel1"></div>
+
+    <!-- Mission, Vision & Values -->
+    <section class="mission-section">
+        <h2>Mission, Vision & Value</h2>
+        <div class="mission-cards">
+            <div class="mission-card">
+                <div class="mission-icon">
+                    <img src="./mission1.png" alt="Mission Icon">
+                </div>
+                <p>To lead global markets with India’s organic heritage, built on trust and sustainable progress. <br>
+                    Empowering producers and innovating responsibly from farm to future.</p>
+            </div>
+            <div class="mission-card">
+                <div class="mission-icon">
+                    <img src="./mission2.png" alt="Vision Icon">
+                </div>
+                <p>To take India’s organic heritage to the world through products that are pure and natural.
+                    <br> We aim to inspire healthier living and conscious consumption globally.
+                </p>
+            </div>
+            <div class="mission-card">
+                <div class="mission-icon">
+                    <img src="./mission3.png" alt="Values Icon">
+                </div>
+                <p>We stand for pure ingredients, honest practices, eco-conscious choices, and world-class quality. <br>
+                    Our commitment is to deliver trust, care, and excellence in every experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carousel 2 Image -->
+    <div class="image-section carousel2"></div>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose">
+        <div class="why-choose-container">
+            <div class="why-choose-image">
+                <img src="./why-choose-us.png" alt="Why Choose Us">
+            </div>
+            <div class="why-choose-content">
+                <h2>Why Choose Us?</h2>
+                <p>At Pintexim, our commitment goes beyond just providing premium nuts and dry fruits. We offer an
+                    experience that combines quality, trust, and exceptional service. Our state-of-the-art facilities
+                    ensure that every product meets the highest standards of freshness and taste.</p>
+                <p>We source directly from trusted farmers and suppliers, maintaining complete transparency in our
+                    supply chain. Our rigorous quality control processes guarantee that you receive only the finest
+                    products, carefully selected and processed to preserve their natural goodness.</p>
+                <p>With years of expertise in the industry and a passionate team dedicated to excellence, we continue to
+                    innovate and improve our offerings to meet your evolving needs and preferences.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section class="certifications">
+        <h2>Certifications</h2>
+        <div class="cert-grid">
+            <div class="cert-item">
+                <div class="cert-icon">
+                    <img src="./certification1.png" alt="FSSAI Certification">
+                </div>
+                <div class="cert-label">FSSAI</div>
+            </div>
+            <div class="cert-item">
+                <div class="cert-icon">
+                    <img src="./certification2.png" alt="IIEM Certification">
+                </div>
+                <div class="cert-label">IIEM</div>
+            </div>
+            <div class="cert-item">
+                <div class="cert-icon">
+                    <img src="./certification3.png" alt="Udemy Certification">
+                </div>
+                <div class="cert-label">Udemy</div>
+            </div>
+        </div>
+        <div class="cert-grid-bottom">
+            <div class="cert-item">
+                <div class="cert-icon">
+                    <img src="./certification4.png" alt="HACCP Certification">
+                </div>
+                <div class="cert-label">HACCP</div>
+            </div>
+            <div class="cert-item">
+                <div class="cert-icon">
+                    <img src="./certification5.png" alt="APEDA Certification">
+                </div>
+                <div class="cert-label">APEDA</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team -->
+    <section class="our-team">
+        <h2>Our Team</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="./partner-default.png" alt="Team Member">
+                <div class="team-member-content">
+                    <h4>John Smith</h4>
+                    <div class="position">Chief Executive Officer</div>
+                    <p class="description">Leading with vision and passion for quality excellence in every aspect of our
+                        business operations.</p>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="./partner-default.png" alt="Team Member">
+                <div class="team-member-content">
+                    <h4>Sarah Johnson</h4>
+                    <div class="position">Quality Assurance Director</div>
+                    <p class="description">Ensuring every product meets our stringent quality standards and customer
+                        expectations.</p>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="./partner-default.png" alt="Team Member">
+                <div class="team-member-content">
+                    <h4>Michael Chen</h4>
+                    <div class="position">Operations Manager</div>
+                    <p class="description">Streamlining processes and maintaining efficiency across all our operational
+                        departments.</p>
+                </div>
+            </div>
+            <div class="team-member">
+                <img src="./partner-default.png" alt="Team Member">
+                <div class="team-member-content">
+                    <h4>Emily Davis</h4>
+                    <div class="position">Marketing Director</div>
+                    <p class="description">Building brand awareness and connecting with customers through innovative
+                        marketing strategies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Culture Section -->
+    <section class="culture">
+        <h2>Culture</h2>
+        <div class="culture-grid">
+            <div class="culture-item">
+                <h3>Innovation</h3>
+                <p>We constantly seek new ways to improve our products and services, embracing technology and creative
+                    solutions.</p>
+            </div>
+            <div class="culture-item">
+                <h3>Collaboration</h3>
+                <p>Our team works together towards common goals, fostering an environment of mutual respect and shared
+                    success.</p>
+            </div>
+            <div class="culture-item">
+                <h3>Excellence</h3>
+                <p>We strive for perfection in everything we do, from product quality to customer service and beyond.
+                </p>
+            </div>
+            <div class="culture-item">
+                <h3>Sustainability</h3>
+                <p>We are committed to environmentally responsible practices that benefit our planet and future
+                    generations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Carousel Image -->
+    <div class="image-section carousel1"></div>
+
+    <!-- Footer Spacer -->
+    <div class="footer-spacer"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="./footer-logo.png" alt="Pintexim Footer Logo">
+            </div>
+
+            <div class="footer-section">
+                <h3>Explore</h3>
+                <ul>
+                    <li><a href="../MainHomepage/Index.html">Home</a></li>
+                    <li><a href="../about-us/about-us.html">About us</a></li>
+                    <li><a href="../contact-us/contact-us.html">Contact us</a></li>
+                    <li><a href="../blog/blog.html">Blog</a></li>
+                    <li><a href="#">Team</a></li>
+                    <li><a href="../products/products.html">Our Menu</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact us</h3>
+                <div class="contact-info">
+                    <p class="address"><a href="https://maps.google.com/?q=Andheri+East+Mumbai+-400069" target="_blank">Andheri East Mumbai -400069</a></p>
+                    <p class="phone"><a href="tel:+918682908682">+91 8682908682</a></p>
+                    <p class="email"><a href="mailto:parmeshwariinternationalexim@gmail.com">parmeshwariinternationalexim@gmail.com</a></p>
+                    <p class="hours">Mon - Sat - 09:00 AM to 05:00 PM</p>
+                </div>
+            </div>
+
+            <div class="footer-section newsletter">
+                <h3>Subscribe</h3>
+                <div class="subtitle">To Our Newsletter</div>
+                <p>Subscribe our newsletter and get discount 25%off</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Enter Your Email">
+                    <button type="submit">Subscribe</button>
+                </div>
+                <div class="social-icons">
+                    <img src="./social-facebook.png" alt="Facebook">
+                    <img src="./social-twitter.png" alt="Twitter">
+                    <img src="./social-instagram.png" alt="Instagram">
+                    <img src="./social-youtube.png" alt="YouTube">
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2025 by PINTEXIM. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
